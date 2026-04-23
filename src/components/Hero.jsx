@@ -8,6 +8,7 @@ export default function Hero(){
 
     const fileref = useRef(null)
     const [image, setImage] = useState(null)
+    const [imageForEdit,setImageForEdit] = useState(null)
 
     const handleClick = ()=>{
         fileref.current.click()
@@ -16,6 +17,7 @@ export default function Hero(){
     const imageDisplay = (e)=>{
         const selectedFile = e.target.files[0];
         if(selectedFile){
+            setImageForEdit(selectedFile)
             const url = URL.createObjectURL(selectedFile)
             console.log(url)
             setImage(url)
@@ -25,6 +27,25 @@ export default function Hero(){
     useEffect(()=>{
          return () => {if(image) URL.revokeObjectURL(image)}
     },[image])
+
+    const ImgEdit = async (file) =>{
+       const formData = new FormData();
+       formData.append("image", file)
+       const res = await fetch("https://api.remove.bg/v1.0/removebg",{
+        method : "POST",
+        headers = {
+             "X-Api-Key": "YOUR_API_KEY",
+        },
+        body = formData,
+        
+       })
+       const response = await res.blob();
+       const url = URL.createObjectURL(response)
+       setImage(url)
+        
+
+
+    }
 
     return(
         <div className="flex items-center justify-center w-full h-full">
@@ -38,10 +59,12 @@ export default function Hero(){
             />
 
             <div className=" flex items-center justify-center rounded-4xl w-[90%] h-[70%] bg-[rgb(41,44,49)] ">
+                <div className=" flex flex-col justify-evenly items-center gap-5 w-[95%] h-[90%]  border-gray-600 border border-dashed rounded-3xl bg-[rgba(0,0,0,0.1)]">
 
                 {
                     
                  image ?
+                 
 
                   (
                     <div className=" flex flex-col justify-evenly items-center gap-5 w-[95%] h-[90%]  border-gray-600 border border-dashed rounded-3xl bg-[rgba(0,0,0,0.1)]">
@@ -49,7 +72,8 @@ export default function Hero(){
                   </div>
                 )
                 :
-                ( <div className=" flex flex-col justify-evenly items-center gap-5 w-[95%] h-[90%]  border-gray-600 border border-dashed rounded-3xl bg-[rgba(0,0,0,0.1)]">
+                (
+                     <div className=" flex flex-col justify-evenly items-center gap-5 w-[95%] h-[90%]  border-gray-600 border border-dashed rounded-3xl bg-[rgba(0,0,0,0.1)]">
 
                        <div 
                        onClick={handleClick}
@@ -62,11 +86,12 @@ export default function Hero(){
                             <span className=""><FaPlus /></span>
                             <span>Select Photo(s)</span>
                        </button>
-                </div>)
+                      </div>
+                      )
                 
                 }
+                </div>
             </div>
            
         </div>
     )
-}

@@ -9,7 +9,7 @@ export default function Hero(){
 
     
     return(
-        <div className=" sm:px-10 sm:flex items-center sm:justify-start justify-center w-full h-[85%] border">
+        <div className=" sm:px-10 sm:flex items-center sm:justify-sjustify-center w-full h-[85%] border">
           
             <Upload />
             <TextSection />

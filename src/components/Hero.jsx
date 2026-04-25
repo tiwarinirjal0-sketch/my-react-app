@@ -9,7 +9,7 @@ export default function Hero(){
 
     
     return(
-        <div className=" sm:px-10 sm:flex items-center sm:justify-sjustify-center w-full h-[85%] border">
+        <div className=" margin-5 sm:px-10 sm:flex items-center justify-center items-center sm:justify-sjustify-center w-full h-[85%] rounded-2xl bg-[#292c31] ">
           
             <Upload />
             <TextSection />

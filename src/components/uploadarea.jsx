@@ -30,13 +30,13 @@ export default function Upload(){
 
     const ImgEdit = async (file) =>{
        const formData = new FormData();
-       formData.append("image", file)
+       formData.append("image_file", file)
        const res = await fetch("https://api.remove.bg/v1.0/removebg",{
         method : "POST",
         headers : {
              "X-Api-Key": "YOUR_API_KEY",
         },
-        body :{formData},
+        body :formData,
         
        })
        const response = await res.blob();

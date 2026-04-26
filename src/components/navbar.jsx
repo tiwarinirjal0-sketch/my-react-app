@@ -4,6 +4,7 @@ import { FaCrown,FaUser } from "react-icons/fa";
 import { IoSettingsSharp } from "react-icons/io5";
 import { FaBell } from "react-icons/fa6";
 import { GiHamburgerMenu } from "react-icons/gi";
+import Menu from "./menu";
 
 
 export default function NavBar() {
@@ -21,12 +22,13 @@ export default function NavBar() {
 
 
   return (
-       <div className="flex justify-between w-full h-[13%]">
+       <div className=" flex justify-between w-full h-[13%]">
+        <Menu />
         <div className="p-8
          flex items-center justify-around h-full w-[200px] ">
             <span className="w-[40px] h-[40px] overflow-hidden relative">
               <img
-                src="https://pixlr.com/img/general/bg-icon.svg"
+                src="https://pixlr.com/img/ge neral/bg-icon.svg"
                 alt="hello"
                 className="w-full h-full object-cover rounded-lg"
                 />

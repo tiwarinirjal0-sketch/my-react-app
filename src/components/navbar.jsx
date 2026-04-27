@@ -5,6 +5,7 @@ import { IoSettingsSharp } from "react-icons/io5";
 import { FaBell } from "react-icons/fa6";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Menu from "./menu";
+import { useState } from "react";
 
 
 export default function NavBar() {
@@ -14,21 +15,21 @@ export default function NavBar() {
       
       {name:"P",icon:<IoSettingsSharp />,state:"hidden"},
       {name:"P",icon:<FaBell />,state:"hidden"},
-      {name:"Y",icon:<GiHamburgerMenu />,state:"visible"}
+      {name:"Y",icon:<GiHamburgerMenu />,state:"visible", onmouseover:()=>setMenuVisibility(prev=>!prev)}
     ]
 
     const iconStyle = "text-bold text-xl flex items-center justify-center w-[40px] h-[40px] bg-[#fff1] hover:bg-[#fff2] rounded-full text-white cursor-pointer"
  
-
+    const [menuVisibility, setMenuVisibility] = useState(false)
 
   return (
        <div className=" flex justify-between w-full h-[13%]">
-        <Menu />
+       { menuVisibility && <Menu />}
         <div className="p-8
          flex items-center justify-around h-full w-[200px] ">
             <span className="w-[40px] h-[40px] overflow-hidden relative">
               <img
-                src="https://pixlr.com/img/ge neral/bg-icon.svg"
+                src="https://pixlr.com/img/general/bg-icon.svg"
                 alt="hello"
                 className="w-full h-full object-cover rounded-lg"
                 />
@@ -48,7 +49,7 @@ export default function NavBar() {
           </div>
           
            {IconNames.map(item=>(
-            <div className={iconStyle}
+            <div className={iconStyle} onMouseEnter={item.onmouseover}
             >
                 {item.icon}
             </div>

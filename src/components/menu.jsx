@@ -1,40 +1,40 @@
 export default function Menu(){
-    const menuSections = [
+    const menu = [
         {
             items : [
-                {title:"Pixlr Editor"},
-                {title:"Pixlr Express"},
-                {title:"Pixlr"},
-                {title:"Remove Bg"}
-                 ]
-        },
-        {
-            items :[
-                {title:"AI Face Swap"},
-                {title:"AI Image Generator"},
-                {title:"AI Video Generator"},
-                {title:"Nano Banana"},
-                {title:"Photo College Maker"}
+                {name:"Pixlr Editor"},
+                {name:"Pixlr Express"},
+                {name:"Pixlr"},
+                {name:"Remove Bg"}
             ]
         },
-        
+        {
+            items : [
+                {name:"AI Face Swap"},
+                {name:"AI image Generator"},
+                {name:"AI Video Generator"},
+                {name:"Nano Banana"},
+                {name:"Photo College Maker"}
+            ] 
+        },
     ]
-
-   
 
 
     return(
-        <div className=" p-5 justify-center flex flex-col gap-10 rounded-3xl absolute right-[20px] top-[65px] w-[250px] h-[400px] bg-white">
-            {menuSections.map((section)=>
-            (
-                <div className="flex flex-col gap-4">
-                    {section.items.map(title=>(
-                         <div className="text-sm ">{title.title}</div>
-                    ))}
+        <div className="absolute w-[200px] h-[400px] right-[30px] top-[60px] bg-white rounded-3xl p-4 flex flex-col gap-10 ">
+        {menu.map(section=>(
+           <div className="flex flex-col gap-3">
+              {section.items.map(menuItems=>(
+                <div className="flex w-full gap-7 cursor-pointer hover:bg-gray-200 rounded-xl">
+                    <span></span>
+                    <span>{menuItems.name}</span>
+                    
                 </div>
-            )
-            )}
-
+              ))}
+           </div>
+        ))}
         </div>
+
     )
+
 }

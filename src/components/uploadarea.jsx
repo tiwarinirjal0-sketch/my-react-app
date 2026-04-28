@@ -4,7 +4,7 @@ import { useEffect, useRef,useState } from "react";
 
 
 
-export default function Upload(){
+export default function Upload({onImageProcessed}){
 
     const fileref = useRef(null)
     const [image, setImage] = useState(null)
@@ -21,6 +21,7 @@ export default function Upload(){
             const url = URL.createObjectURL(selectedFile)
             console.log(url)
             setImage(url)
+            
         }
     }
     
@@ -42,6 +43,7 @@ export default function Upload(){
        const response = await res.blob();
        const url = URL.createObjectURL(response)
        setImage(url)
+       onImageProcessed(url)
         
 
 
